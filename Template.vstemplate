@@ -1,0 +1,58 @@
+<VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
+  <TemplateData>
+    <Name>NppCppMSVS</Name>
+    <Description>A plugin for Notepad++ written in C++</Description>
+    <ProjectType>VC</ProjectType>
+    <LanguageTag>C++</LanguageTag>
+    <PlatformTag>Windows</PlatformTag>
+    <ProjectTypeTag>Desktop</ProjectTypeTag>
+    <ProjectSubType>
+    </ProjectSubType>
+    <SortOrder>1000</SortOrder>
+    <CreateNewFolder>true</CreateNewFolder>
+    <ProvideDefaultName>false</ProvideDefaultName>
+    <LocationField>Enabled</LocationField>
+    <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
+    <Icon>__TemplateIcon.ico</Icon>
+  </TemplateData>
+  <TemplateContent>
+    <Project TargetFileName="$projectname$.vcxproj" File="NppCppMSVS.vcxproj" ReplaceParameters="true">
+      <ProjectItem ReplaceParameters="false" TargetFileName="$projectname$.vcxproj.filters">NppCppMSVS.vcxproj.filters</ProjectItem>
+      <ProjectItem ReplaceParameters="false" >CHANGELOG.md</ProjectItem>
+      <ProjectItem ReplaceParameters="false" >LICENSE.txt</ProjectItem>
+      <ProjectItem ReplaceParameters="false" >README.md</ProjectItem>
+      <ProjectItem ReplaceParameters="false" >help.htm</ProjectItem>
+      <ProjectItem ReplaceParameters="true"  >src\About.cpp</ProjectItem>
+      <ProjectItem ReplaceParameters="true"  >src\CommonData.h</ProjectItem>
+      <ProjectItem ReplaceParameters="true"  >src\Configuration.cpp</ProjectItem>
+      <ProjectItem ReplaceParameters="true"  >src\Plugin.cpp</ProjectItem>
+      <ProjectItem ReplaceParameters="true"  >src\ProcessCommands.cpp</ProjectItem>
+      <ProjectItem ReplaceParameters="true"  >src\ProcessNotifications.cpp</ProjectItem>
+      <ProjectItem ReplaceParameters="true"  >src\Settings.cpp</ProjectItem>
+      <ProjectItem ReplaceParameters="true"  >src\Status.cpp</ProjectItem>
+      <ProjectItem ReplaceParameters="true"  >src\Watcher.cpp</ProjectItem>
+      <ProjectItem ReplaceParameters="true"  >src\resource.h</ProjectItem>
+      <ProjectItem ReplaceParameters="true"  >src\resource.rc</ProjectItem>
+      <ProjectItem ReplaceParameters="false" >src\Framework\ConfigFramework.h</ProjectItem>
+      <ProjectItem ReplaceParameters="false" >src\Framework\PluginFramework.cpp</ProjectItem>
+      <ProjectItem ReplaceParameters="false" >src\Framework\PluginFramework.h</ProjectItem>
+      <ProjectItem ReplaceParameters="false" >src\Framework\ScintillaCallEx.cpp</ProjectItem>
+      <ProjectItem ReplaceParameters="false" >src\Framework\ScintillaCallEx.h</ProjectItem>
+      <ProjectItem ReplaceParameters="false" >src\Framework\UtilityFramework.h</ProjectItem>
+      <ProjectItem ReplaceParameters="false" >src\Framework\UtilityFrameworkMIT.h</ProjectItem>
+      <ProjectItem ReplaceParameters="false" >src\Host\BoostRegexSearch.h</ProjectItem>
+      <ProjectItem ReplaceParameters="false" >src\Host\Docking.h</ProjectItem>
+      <ProjectItem ReplaceParameters="false" >src\Host\Notepad_plus_msgs.h</ProjectItem>
+      <ProjectItem ReplaceParameters="false" >src\Host\PluginInterface.h</ProjectItem>
+      <ProjectItem ReplaceParameters="false" >src\Host\Sci_Position.h</ProjectItem>
+      <ProjectItem ReplaceParameters="false" >src\Host\Scintilla.h</ProjectItem>
+      <ProjectItem ReplaceParameters="false" >src\Host\ScintillaCall.cxx</ProjectItem>
+      <ProjectItem ReplaceParameters="false" >src\Host\ScintillaCall.h</ProjectItem>
+      <ProjectItem ReplaceParameters="false" >src\Host\ScintillaMessages.h</ProjectItem>
+      <ProjectItem ReplaceParameters="false" >src\Host\ScintillaStructures.h</ProjectItem>
+      <ProjectItem ReplaceParameters="false" >src\Host\ScintillaTypes.h</ProjectItem>
+      <ProjectItem ReplaceParameters="false" >src\Host\menuCmdID.h</ProjectItem>
+      <ProjectItem ReplaceParameters="false" >src\nlohmann\json.hpp</ProjectItem>
+    </Project>
+  </TemplateContent>
+</VSTemplate>
