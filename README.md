@@ -24,7 +24,7 @@ The template generates a working plugin that includes a menu command, a Settings
 
 ---
 
-The [help file](https://coises.github.io/NppCppPluginMSVS/help.htm) contains documentation regarding the files and functions included. You'll want to modify the copy of this file in your project to create your own help file; but you can still use the one linked here, or make a local copy of the original file, for reference.
+The [help file](https://coises.github.io/NppCppMSVS/help.htm) contains documentation regarding the files and functions included. You'll want to modify the copy of this file in your project to create your own help file; but you can still use the one linked here, or make a local copy of the original file, for reference.
 
 ---
 
