@@ -8,6 +8,8 @@
 
 * Changed npp template in Framework\\UtilityFramework.h to support enum arguments without casting
 
+* Changed the name that shows in the Visual Studio project templates list to **C++ Plugin for Notepad++**
+
 ## Version 1.0 -- March 5th, 2025
 
 * First release.
