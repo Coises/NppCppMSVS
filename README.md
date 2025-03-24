@@ -63,7 +63,9 @@ while being used in most contexts as if they were plain `std::wstring` and `bool
 
 ## Installation
 
-To use this template, place the zip file for the latest release in the **Visual Studio 2022\Templates\ProjectTemplates** folder within your **Documents** folder; you’ll probably want to rename it to something like **NppCppMSVS-*version*.zip**. The next time you start Visual Studio and choose **Create a new project**, you’ll find **Notepad++ C++ Plugin** available as a C++ project template.
+To install the template, download **NppCppMSVS-*n.nn*.zip** from the [latest release](https://github.com/Coises/NppCppMSVS/releases/latest/) and place it in the **Visual Studio 2022\Templates\ProjectTemplates** folder within your **Documents** folder. *Don’t unzip it!* The next time you start Visual Studio and choose **Create a new project**, you’ll find **C++ Plugin for Notepad++** available as a C++ project template.
+
+(If you don’t have the folder described above: Open Visual Studio 2022 and choose **Continue without code**; from the menu bar, select **Tools** | **Options...**; in the **Projects and Solutions** section, select **Locations**. **User project template location** shows the path to the correct folder in which to place the zip file.)
 
 When you create a project from this template, the initial Visual Studio project settings make it possible to test the plugin with an installed copy of Notepad++ (x86, x64 or both). After a successful build, the plugin dll and documentation files are copied to your Notepad++ plugin directory if Notepad++ is installed in the default location. *This only works if you set permissions on the directory to allow copying without elevated permissions.* You can modify the Post-Build Event in the Configuration Properties for the project if you want to deploy the plugin to a different copy of Notepad++ for testing, or disable the Post-Build Event if you want to copy it manually.
 

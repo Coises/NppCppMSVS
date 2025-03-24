@@ -4,11 +4,13 @@
 
 ## Version 1.1 -- March 24th, 2025
 
-* Updated Scintilla files in the Host directory to Scintilla 5.5.5 (will be in Notepad++ v8.7.9)
+* Updated Scintilla files in the Host directory to Scintilla 5.5.5 (will be in Notepad++ v8.7.9).
 
-* Changed npp template in Framework\\UtilityFramework.h to support enum arguments without casting
+* Changed `npp` template in Framework\\UtilityFramework.h to support enum arguments without casting.
 
-* Changed the name that shows in the Visual Studio project templates list to **C++ Plugin for Notepad++**
+* Changed the name that shows in the Visual Studio project templates list to **C++ Plugin for Notepad++**.
+
+* Corrected installation instructions.
 
 ## Version 1.0 -- March 5th, 2025
 
