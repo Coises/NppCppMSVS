@@ -129,5 +129,8 @@
     <None Include="src\Host\ScintillaCall.cxx">
       <Filter>Support Files</Filter>
     </None>
+    <None Include="ZipForRelease.ps1">
+      <Filter>Support Files</Filter>
+    </None>
   </ItemGroup>
 </Project>
