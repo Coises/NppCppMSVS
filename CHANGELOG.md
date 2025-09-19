@@ -2,6 +2,11 @@
 
 ***Note: This is the changelog for the template. In your project, replace this text with the changelog for your own plugin.***
 
+## Version 1.4 -- September 18th, 2025
+
+* Updated files in the Host directory to Notepad++ 8.8.5 and Scintilla 5.5.7.
+* Updated Nlohmann JSON for Modern C++ to version 3.12.0
+
 ## Version 1.3 -- May 4th, 2025
 
 * Updated files in the Host directory to Notepad++ 8.8.1 and Scintilla 5.5.6.
