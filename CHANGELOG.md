@@ -2,6 +2,10 @@
 
 ***Note: This is the changelog for the template. In your project, replace this text with the changelog for your own plugin.***
 
+## Version 1.5 -- October 7th, 2025
+
+* Updated files in the Host directory to Notepad++ 8.8.6.
+
 ## Version 1.4 -- September 19th, 2025
 
 * Corrected errors in fromWide and toWide functions that could cause them to fail with very large strings.
