@@ -96,15 +96,16 @@ div.hscroll  {overflow-x: auto;}
 ul    {margin: 0 0 .5em 0;}
 ul li {margin: .25em 0;}
 
-pre {font-size: .9em; line-height: 1.1; background: #ddd; padding: .5em; overflow: auto;}
+pre   {font-size: .9em; line-height: 1.1; background: #ddd; padding: .5em; overflow: auto;}
+pre a {white-space: pre;}
 
 div.boxed                 {margin: 1em 0; padding: 0 0 1em 0; border: 1px solid #000;}
 div.boxed > *:first-child {margin-top: 0; margin-left: 0; margin-right: 0; background: #ddd; padding: .5em;}
 div.boxed pre             {font-size: inherit; margin-top: 0;}
 div.boxed p               {margin-left: 1em; margin-right: 1em;}
-div.boxed p + p           {margin-left: 2.5em;}
 div.boxed ul              {margin-right: 1em;}
 div.boxed li > code:first-child {font-weight: bold;}
+div.boxed pre.example     {background: none; margin: .5em 1em 0; border: 1px solid #000;}
 
 body {color: #000; background: #d0d0d0;}
 *    {border-color: #999;}
@@ -158,7 +159,8 @@ window.addEventListener("load", doPageLoad);
 <hr><a href="#config"    ><code>config</code></a>
 <a href="#config_history"><code>config_history</code></a>
 <a href="#config_rect"   ><code>config_rect</code></a>
-<a href="#dialogstretch" ><code>DialogStretch</code></a></nav>
+<a href="#dialogstretch" ><code>DialogStretch</code></a>
+<a href="#filedialogbase"><code>FileDialogBase</code></a></nav>
 
 <article>
 
@@ -241,26 +243,28 @@ window.addEventListener("load", doPageLoad);
 <div class=hscroll>
 <table>
 <tr><th>File</th><th>Purpose</th><th>Source</th></tr>
-<tr><td>src\Framework\ConfigFramework.h</td>    <td>declares config template and config_history and config_rect structs for JSON-backed configuration data</td>                                 <td><a href="https://github.com/Coises/NppCppMSVS/blob/master/src/Framework/ConfigFramework.h"                                    >part of this framework</a    ></td></tr>
-<tr><td>src\Framework\PluginFramework.cpp</td>  <td>contains the DLL entry point and some plugin implementation code required by Notepad++</td>                                                 <td><a href="https://github.com/Coises/NppCppMSVS/blob/master/src/Framework/PluginFramework.cpp"                                  >part of this framework</a    ></td></tr>
-<tr><td>src\Framework\PluginFramework.h</td>    <td>declares PluginData struct which holds information needed to communicate with Notepad++ and Scintilla</td>                                  <td><a href="https://github.com/Coises/NppCppMSVS/blob/master/src/Framework/PluginFramework.h"                                    >part of this framework</a    ></td></tr>
-<tr><td>src\Framework\ScintillaCallEx.cpp</td>  <td rowspan=2>preprocessor modification of ScintillaCall to make exception derive from std::exception, which is handled better by Notepad++</td><td><a href="https://github.com/Coises/NppCppMSVS/blob/master/src/Framework/ScintillaCallEx.cpp"                                  >part of this framework</a    ></td></tr>
-<tr><td>src\Framework\ScintillaCallEx.h</td>                                                                                                                                                    <td><a href="https://github.com/Coises/NppCppMSVS/blob/master/src/Framework/ScintillaCallEx.h"                                    >part of this framework</a    ></td></tr>
-<tr><td>src\Framework\UtilityFramework.h</td>   <td rowspan=2>define a few helpful functions as described in the <a href="#utility">Utility functions</a> section of this help</td>             <td><a href="https://github.com/Coises/NppCppMSVS/blob/master/src/Framework/UtilityFramework.h"                                   >part of this framework</a    ></td></tr>
-<tr><td>src\Framework\UtilityFrameworkMIT.h</td>                                                                                                                                                <td><a href="https://github.com/Coises/NppCppMSVS/blob/master/src/Framework/UtilityFrameworkMIT.h"                                >part of this framework</a    ></td></tr>
-<tr><td>src\Host\BoostRegexSearch.h</td>        <td>defines constants used for communicating Boost search options to Scintilla</td>                                                             <td><a href="https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/scintilla/include/BoostRegexSearch.h"                   >Scintilla within Notepad++</a></td></tr>
-<tr><td>src\Host\Docking.h</td>                 <td>defines the docking window interface</td>                                                                                                   <td><a href="https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/PowerEditor/src/WinControls/DockingWnd/Docking.h"       >Notepad++</a                 ></td></tr>
-<tr><td>src\Host\menuCmdID.h</td>               <td>defines Notepad++ menu commands</td>                                                                                                        <td><a href="https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/PowerEditor/src/menuCmdID.h"                            >Notepad++</a                 ></td></tr>
-<tr><td>src\Host\Notepad_plus_msgs.h</td>       <td>defines <a href="https://npp-user-manual.org/docs/plugin-communication/">NPPM_ and NPPN_ messages</a></td>                                  <td><a href="https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/PowerEditor/src/MISC/PluginsManager/Notepad_plus_msgs.h">Notepad++</a                 ></td></tr>
-<tr><td>src\Host\PluginInterface.h</td>         <td>defines the Notepad++ plugin interface</td>                                                                                                 <td><a href="https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/PowerEditor/src/MISC/PluginsManager/PluginInterface.h"  >Notepad++</a                 ></td></tr>
-<tr><td>src\Host\Sci_Position.h</td>            <td rowspan=7>define various structures, functions and constants used in the Scintilla interface</td>                                           <td><a href="https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/scintilla/include/Sci_Position.h"                       >Scintilla within Notepad++</a></td></tr>
-<tr><td>src\Host\Scintilla.h</td>                                                                                                                                                               <td><a href="https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/scintilla/include/Scintilla.h"                          >Scintilla within Notepad++</a></td></tr>
-<tr><td>src\Host\ScintillaCall.cxx</td>                                                                                                                                                         <td><a href="https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/scintilla/call/ScintillaCall.cxx"                       >Scintilla within Notepad++</a></td></tr>
-<tr><td>src\Host\ScintillaCall.h</td>                                                                                                                                                           <td><a href="https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/scintilla/include/ScintillaCall.h"                      >Scintilla within Notepad++</a></td></tr>
-<tr><td>src\Host\ScintillaMessages.h</td>                                                                                                                                                       <td><a href="https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/scintilla/include/ScintillaMessages.h"                  >Scintilla within Notepad++</a></td></tr>
-<tr><td>src\Host\ScintillaStructures.h</td>                                                                                                                                                     <td><a href="https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/scintilla/include/ScintillaStructures.h"                >Scintilla within Notepad++</a></td></tr>
-<tr><td>src\Host\ScintillaTypes.h</td>                                                                                                                                                          <td><a href="https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/scintilla/include/ScintillaTypes.h"                     >Scintilla within Notepad++</a></td></tr>
-<tr><td>src\nlohmann\json.hpp</td>              <td>maps a JSON configuration file to a C++ container</td>                                                                                      <td><a class=wrappable href="https://github.com/nlohmann/json/blob/master/single_include/nlohmann/json.hpp"                             ><span>Niels Lohmann’s</span> <span>JSON for Modern C++</span></a></td></tr>
+<tr><td>src\Framework\ConfigFramework.h</td>         <td>declares config template and config_history and config_rect structs for JSON-backed configuration data</td>                                 <td><a href="https://github.com/Coises/NppCppMSVS/blob/master/src/Framework/ConfigFramework.h"                                          >part of this framework</a    ></td></tr>
+<tr><td>src\Framework\FileDialogBase.h</td>          <td>contains definitions that make it easier to use a Windows Common Item Dialog to open or save files</td>                                     <td><a href="https://github.com/Coises/NppCppMSVS/blob/master/src/Framework/FileDialogBase.cpp"                                         >part of this framework</a    ></td></tr>
+<tr><td>src\Framework\PluginFramework.cpp</td>       <td>contains the DLL entry point and some plugin implementation code required by Notepad++</td>                                                 <td><a href="https://github.com/Coises/NppCppMSVS/blob/master/src/Framework/PluginFramework.cpp"                                        >part of this framework</a    ></td></tr>
+<tr><td>src\Framework\PluginFramework.h</td>         <td>declares PluginData struct which holds information needed to communicate with Notepad++ and Scintilla</td>                                  <td><a href="https://github.com/Coises/NppCppMSVS/blob/master/src/Framework/PluginFramework.h"                                          >part of this framework</a    ></td></tr>
+<tr><td>src\Framework\ScintillaCallEx.cpp</td>       <td rowspan=2>preprocessor modification of ScintillaCall to make exception derive from std::exception, which is handled better by Notepad++</td><td><a href="https://github.com/Coises/NppCppMSVS/blob/master/src/Framework/ScintillaCallEx.cpp"                                        >part of this framework</a    ></td></tr>
+<tr><td>src\Framework\ScintillaCallEx.h</td>                                                                                                                                                         <td><a href="https://github.com/Coises/NppCppMSVS/blob/master/src/Framework/ScintillaCallEx.h"                                          >part of this framework</a    ></td></tr>
+<tr><td>src\Framework\UnicodeFormatTranslation.h</td><td rowspan=3>define a few helpful functions as described in the <a href="#utility">Utility functions</a> section of this help</td>             <td><a href="https://github.com/Coises/NppCppMSVS/blob/master/src/Framework/UnicodeFormatTranslation.h"                                 >part of this framework</a    ></td></tr>
+<tr><td>src\Framework\UtilityFramework.h</td>                                                                                                                                                        <td><a href="https://github.com/Coises/NppCppMSVS/blob/master/src/Framework/UtilityFramework.h"                                         >part of this framework</a    ></td></tr>
+<tr><td>src\Framework\UtilityFrameworkMIT.h</td>                                                                                                                                                     <td><a href="https://github.com/Coises/NppCppMSVS/blob/master/src/Framework/UtilityFrameworkMIT.h"                                      >part of this framework</a    ></td></tr>
+<tr><td>src\Host\BoostRegexSearch.h</td>             <td>defines constants used for communicating Boost search options to Scintilla</td>                                                             <td><a href="https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/scintilla/include/BoostRegexSearch.h"                   >Scintilla within Notepad++</a></td></tr>
+<tr><td>src\Host\Docking.h</td>                      <td>defines the docking window interface</td>                                                                                                   <td><a href="https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/PowerEditor/src/WinControls/DockingWnd/Docking.h"       >Notepad++</a                 ></td></tr>
+<tr><td>src\Host\menuCmdID.h</td>                    <td>defines Notepad++ menu commands</td>                                                                                                        <td><a href="https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/PowerEditor/src/menuCmdID.h"                            >Notepad++</a                 ></td></tr>
+<tr><td>src\Host\Notepad_plus_msgs.h</td>            <td>defines <a href="https://npp-user-manual.org/docs/plugin-communication/">NPPM_ and NPPN_ messages</a></td>                                  <td><a href="https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/PowerEditor/src/MISC/PluginsManager/Notepad_plus_msgs.h">Notepad++</a                 ></td></tr>
+<tr><td>src\Host\PluginInterface.h</td>              <td>defines the Notepad++ plugin interface</td>                                                                                                 <td><a href="https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/PowerEditor/src/MISC/PluginsManager/PluginInterface.h"  >Notepad++</a                 ></td></tr>
+<tr><td>src\Host\Sci_Position.h</td>                 <td rowspan=7>define various structures, functions and constants used in the Scintilla interface</td>                                           <td><a href="https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/scintilla/include/Sci_Position.h"                       >Scintilla within Notepad++</a></td></tr>
+<tr><td>src\Host\Scintilla.h</td>                                                                                                                                                                    <td><a href="https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/scintilla/include/Scintilla.h"                          >Scintilla within Notepad++</a></td></tr>
+<tr><td>src\Host\ScintillaCall.cxx</td>                                                                                                                                                              <td><a href="https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/scintilla/call/ScintillaCall.cxx"                       >Scintilla within Notepad++</a></td></tr>
+<tr><td>src\Host\ScintillaCall.h</td>                                                                                                                                                                <td><a href="https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/scintilla/include/ScintillaCall.h"                      >Scintilla within Notepad++</a></td></tr>
+<tr><td>src\Host\ScintillaMessages.h</td>                                                                                                                                                            <td><a href="https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/scintilla/include/ScintillaMessages.h"                  >Scintilla within Notepad++</a></td></tr>
+<tr><td>src\Host\ScintillaStructures.h</td>                                                                                                                                                          <td><a href="https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/scintilla/include/ScintillaStructures.h"                >Scintilla within Notepad++</a></td></tr>
+<tr><td>src\Host\ScintillaTypes.h</td>                                                                                                                                                               <td><a href="https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/scintilla/include/ScintillaTypes.h"                     >Scintilla within Notepad++</a></td></tr>
+<tr><td>src\nlohmann\json.hpp</td>                   <td>maps a JSON configuration file to a C++ container</td>                                                                                      <td><a class=wrappable href="https://github.com/nlohmann/json/blob/master/single_include/nlohmann/json.hpp"                             ><span>Niels Lohmann’s</span> <span>JSON for Modern C++</span></a></td></tr>
 </table>
 </div>
 
@@ -297,7 +301,8 @@ window.addEventListener("load", doPageLoad);
 </section>
 
 <section id=utility><h2>Utility functions</h2>
-<p><strong>src\Framework\UtilityFramework.h</strong> includes several convenience functions and a structure you can use.</p>
+
+<p><strong>src\Framework\UtilityFramework.h</strong> includes several convenience functions and a structure you can use:</p>
 
 <div class=boxed>
 <pre>LRESULT npp(UINT Msg, WPARAM wParam, LPARAM lParam)</pre>
@@ -320,6 +325,30 @@ std::string fromWide(std::wstring_view s)</pre>
 <pre>std::wstring toWide(std::string_view s, unsigned int codepage)
 std::wstring toWide(std::string_view s)</pre>
 <p>Converts a byte string to a wide string. If <code>codepage</code> is omitted, it uses the code page of the active Scintilla (which will be either the system default code page or CP_UTF8; don’t let the code page default when processing a Notepad++ notification other than <code>NPPN_BUFFERACTIVATED</code> unless you have called <code>plugin.getScintillaPointers</code> to establish the correct active Scintilla).</p>
+</div>
+
+<div class=boxed>
+<pre>enum class InvalidUnicode {Substitute, Preserve_8, Preserve_16};
+
+std::u32string utf16to32(const std::wstring_view   w);
+std::wstring   utf32to16(const std::u32string_view u);
+std::u32string utf8to32 (const std::string_view    s, InvalidUnicode errs = InvalidUnicode::Substitute);
+std::string    utf32to8 (const std::u32string_view u, InvalidUnicode errs = InvalidUnicode::Substitute);
+std::wstring   utf8to16 (const std::string_view    s, InvalidUnicode errs = InvalidUnicode::Substitute);
+std::string    utf16to8 (const std::wstring_view   w, InvalidUnicode errs = InvalidUnicode::Substitute);</pre>
+<p><em>These functions are first available in NppCppMSVS version 1.6.</em></p>
+<p>These functions convert Unicode strings between UTF-8, UTF-16 AND UTF-32 encodings.</p>
+<ul>
+<li>The arguments <code>s</code>, <strong><code>w</code></strong> and <strong><code>u</code></strong> are strings of UTF-8, UTF-16 and UTF-32 code units.
+<li>The <code>errs</code> argument specifies how invalid Unicode characters should be translated:
+<ul>
+<li><code>InvalidUnicode::Substitute</code>, the default, specifies that the Unicode substitution character, 0xFFFD (�), replaces invalid UTF-8 or UTF-16 code units.
+<li><code>InvalidUnicode::Preserve_8</code> specifies use of <a href="https://peps.python.org/pep-0383/">Python surrogate escape encoding</a> to preserve invalid UTF-8 byte sequences when converting to UTF-16 or UTF-32.
+<li><code>InvalidUnicode::Preserve_16</code> specifies use of <a href="https://wtf-8.codeberg.page/">WTF-8 encoding</a> to preserve invalid UTF-16 wide characters (unpaired surrogates) when converting to UTF-8.
+</ul>
+<p>A byte string interpreted as UTF-8 or a wide-character string interpreted as UTF-16 may contain invalid sequences which cannot be recognized as Unicode. In some cases it may be desirable to convert the input string to another Unicode translation form, perform some processing, and then convert it back to the original form while preserving all bytes not changed by the processing, even if they represent invalid Unicode. <code>Preserve_8</code> and <code>Preserve_16</code> allow processing to “round trip” characters originating as invalid UTF-8 or as invalid UTF-16. The encodings used to preserve invalid UTF-8 and invalid UTF-16 are mutually inconsistent; you must know whether the potentially invalid characters originate from interpreting a byte string as UTF-8 or from interpreting a wide-character string as UTF-16 and specify the appropriate error-handling method when converting from or to UTF-8.</p>
+<p>Conversions between UTF-16 and UTF-32 do no error processing. Invalid UTF-16 strings will round trip, and invalid strings produced with <code>Preserve_8</code> and <code>Preserve_16</code> can be converted between UTF-16 and UTF-32 without losing the ability to round trip back to the original form. Invalid characters <em>originating</em> in strings interpreted as UTF-32 are not diagnosed, substituted or preserved by any conversion.</p>
+</ul>
 </div>
 
 <div class=boxed>
@@ -381,6 +410,8 @@ DialogStretch <em>name</em>;
 </ul>
 
 </div>
+
+<p><strong>src\Framework\FileDialogBase.h</strong> is included in NppCppMSVS beginning with version 1.6. It contains definitions that make it easier to use a Windows <a href="https://learn.microsoft.com/en-us/windows/win32/shell/common-file-dialog">Common Item Dialog</a> to open or save files. See the <a href="#filedialogbase">FileDialogBase</a> section of this help for details.</p>
 
 </section>
 
@@ -1241,25 +1272,25 @@ const RECT&amp; put(HWND w)
 <pre>
 struct DialogStretch {
 
-    HWND dialog;
-    RECT original;
-    std::map&lt;HWND, RECT&gt; controls;
+    <a href="#dialogstretch-dialog">HWND dialog;</a>
+    <a href="#dialogstretch-original">RECT original;</a>
+    <a href="#dialogstretch-controls">std::map&lt;HWND, RECT&gt; controls;</a>
 
-    DialogStretch();
+    <a href="#dialogstretch-constructor">DialogStretch();</a>
 
-    void setup(HWND hwndDlg);
+    <a href="#dialogstretch-setup">void setup(HWND hwndDlg);</a>
 
-    int originalWidth () const;
-    int originalHeight() const;
+    <a href="#dialogstretch-originalWidth">int originalWidth () const;</a>
+    <a href="#dialogstretch-originalHeight">int originalHeight() const;</a>
 
     class Stretched {
     public:
-        Stretched&amp; adjust(HWND h, double xStretch, double yStretch = 0, double xMove = 0, double yMove = 0);
-        Stretched&amp; adjust(int control, double xStretch, double yStretch = 0, double xMove = 0, double yMove = 0);
+        <a href="#dialogstretch-adjust">Stretched&amp; adjust(HWND h, double xStretch, double yStretch = 0, double xMove = 0, double yMove = 0);</a>
+        <a href="#dialogstretch-adjust">Stretched&amp; adjust(int control, double xStretch, double yStretch = 0, double xMove = 0, double yMove = 0);</a>
     };
 
-    Stretched adjust(HWND h, double xStretch, double yStretch = 0, double xMove = 0, double yMove = 0);
-    Stretched adjust(int control, double xStretch, double yStretch = 0, double xMove = 0, double yMove = 0);
+    <a href="#dialogstretch-adjust">Stretched adjust(HWND h, double xStretch, double yStretch = 0, double xMove = 0, double yMove = 0);</a>
+    <a href="#dialogstretch-adjust">Stretched adjust(int control, double xStretch, double yStretch = 0, double xMove = 0, double yMove = 0);</a>
 
 };
 </pre>
@@ -1329,6 +1360,418 @@ Stretched adjust(int control, double xStretch, double yStretch = 0, double xMove
 </ul>
 
 </div>
+
+</section>
+
+<section id=filedialogbase><h2>Detailed specifications for <code>FileDialogBase.h</code></h2>
+
+<p><em>This header is included in NppCppMSVS beginning with version 1.6. At this time it is a preliminary version which has not yet been tested in a broad variety of contexts and does not yet directly implement all reasonable features of the Common Item Dialog interface. Details may change in future versions; if possible, compatibility will be maintained.</em></p>
+
+<p><strong><code>FileDialogBase.h</code></strong> contains definitions that make it easier to customize and display a Windows <a href="https://learn.microsoft.com/en-us/windows/win32/shell/common-file-dialog">Common Item Dialog</a> to open or save a file. An example of the use of <code>FileDialogBase.h</code> appears in <a href="https://github.com/Coises/Compose-for-NotepadPlusPlus/blob/master/src/ProcessCommands.cpp#L71">Compose for Notepad++</a>.</p>
+
+<pre>
+#include "Framework/FileDialogBase.h"
+</pre>
+
+<pre>
+class FileDialogBase : public IFileDialogEvents, public IFileDialogControlEvents {
+public: 
+
+    // <a href="#filedialogbase-events">IFileDialogEvents virtual functions</a>
+
+    STDMETHODIMP OnFileOk         (IFileDialog* pfd)                                                          { return E_NOTIMPL; }
+    STDMETHODIMP OnFolderChanging (IFileDialog* pfd, IShellItem* psiFolder)                                   { return E_NOTIMPL; }
+    STDMETHODIMP OnFolderChange   (IFileDialog* pfd)                                                          { return E_NOTIMPL; }
+    STDMETHODIMP OnSelectionChange(IFileDialog* pfd)                                                          { return E_NOTIMPL; }
+    STDMETHODIMP OnShareViolation (IFileDialog* pfd, IShellItem* psi, FDE_SHAREVIOLATION_RESPONSE* pResponse) { return E_NOTIMPL; }
+    STDMETHODIMP OnTypeChange     (IFileDialog* pfd)                                                          { return E_NOTIMPL; }
+    STDMETHODIMP OnOverwrite      (IFileDialog* pfd, IShellItem* psi, FDE_OVERWRITE_RESPONSE* pResponse)      { return E_NOTIMPL; }
+
+    // <a href="#filedialogbase-controlevents">IFileDialogControlEvents virtual functions</a>
+
+    STDMETHODIMP OnItemSelected      (IFileDialogCustomize* pfdc, DWORD dwIDCtl, DWORD dwIDItem) { return E_NOTIMPL; }
+    STDMETHODIMP OnButtonClicked     (IFileDialogCustomize* pfdc, DWORD dwIDCtl)                 { Close(dwIDCtl); return 0; }
+    STDMETHODIMP OnCheckButtonToggled(IFileDialogCustomize* pfdc, DWORD dwIDCtl, BOOL bChecked)  { return E_NOTIMPL; }
+    STDMETHODIMP OnControlActivating (IFileDialogCustomize* pfdc, DWORD dwIDCtl)                 { return E_NOTIMPL; }
+
+    // Direct access to the customize interface and the error code of the last call
+
+    <a href="#filedialogbase-customize" >IFileDialogCustomize* customize()  const;</a>
+    <a href="#filedialogbase-lastResult">HRESULT               lastResult() const;</a>
+
+    // Delegate common IFileDialog functions
+
+    <a href="#filedialogbase-Close"              >bool                     Close(HRESULT code);</a>
+    <a href="#filedialogbase-GetCurrentSelection">IShellItem*              GetCurrentSelection();</a>
+    <a href="#filedialogbase-GetOptions"         >FILEOPENDIALOGOPTIONS    GetOptions();</a>
+    <a href="#filedialogbase-GetResult"          >IShellItem*              GetResult();</a>
+    <a href="#filedialogbase-GetResultPath"      >std::wstring             GetResultPath();</a>
+    <a href="#filedialogbase-QueryInterface"     >template&lt;typename T*&gt; T* QueryInterface();</a>
+    
+    <a href="#filedialogbase-SetDefaultExtension">bool SetDefaultExtension(const std::wstring&amp; extension);</a>
+    <a href="#filedialogbase-SetFileName"        >bool SetFileName        (const std::wstring&amp; name     );</a>
+    <a href="#filedialogbase-SetFileNameLabel"   >bool SetFileNameLabel   (const std::wstring&amp; label    );</a>
+    <a href="#filedialogbase-SetFileTypeIndex"   >bool SetFileTypeIndex   (int n                        );</a>
+    <a href="#filedialogbase-SetFileTypes"       >bool SetFileTypes       (const std::wstring&amp; types    );</a>
+    <a href="#filedialogbase-SetOkButtonLabel"   >bool SetOkButtonLabel   (const std::wstring&amp; label    );</a>
+    <a href="#filedialogbase-SetOptions"         >bool SetOptions         (FILEOPENDIALOGOPTIONS opt    );</a>
+    <a href="#filedialogbase-SetTitle"           >bool SetTitle           (const std::wstring&amp; title    );</a>
+    <a href="#filedialogbase-Show"               >bool Show               (HWND owner = 0               );</a>
+
+    // Delegate common IFileDialogCustomize functions
+
+    <a href="#filedialogbase-AddCheckButton"        >bool  AddCheckButton        (DWORD id, const std::wstring&amp; label, bool checked);</a>
+    <a href="#filedialogbase-AddControlItem"        >bool  AddControlItem        (DWORD controlId, DWORD itemId, const std::wstring&amp; label);</a>
+    <a href="#filedialogbase-AddPushButton"         >bool  AddPushButton         (DWORD id, const std::wstring&amp; label);</a>
+    <a href="#filedialogbase-AddText"               >bool  AddText               (DWORD id, const std::wstring&amp; label);</a>
+    <a href="#filedialogbase-EnableOpenDropDown"    >bool  EnableOpenDropDown    (DWORD id);</a>
+    <a href="#filedialogbase-GetCheckButtonState"   >bool  GetCheckButtonState   (DWORD id);</a>
+    <a href="#filedialogbase-GetSelectedControlItem">DWORD GetSelectedControlItem(DWORD id);</a>
+    <a href="#filedialogbase-MakeProminent"         >bool  MakeProminent         (DWORD id);</a>
+    <a href="#filedialogbase-SetCheckButtonState"   >bool  SetCheckButtonState   (DWORD id, bool checked);</a>
+
+};
+
+struct OpenDialogBase : FileDialogBase {
+    <a href="#filedialogbase-opensave"        >OpenDialogBase()</a> : FileDialogBase(false);
+    <a href="#filedialogbase-dialog"          >IFileOpenDialog* dialog() const;</a>
+    <a href="#filedialogbase-pointer"         >IFileOpenDialog* operator->() const;</a>
+    <a href="#filedialogbase-GetResults"      >IShellItemArray* GetResults();</a>
+    <a href="#filedialogbase-GetSelectedItems">IShellItemArray* GetSelectedItems();</a>
+};
+
+struct SaveDialogBase : FileDialogBase {
+    <a href="#filedialogbase-opensave">SaveDialogBase()</a> : FileDialogBase(true);
+    <a href="#filedialogbase-dialog"  >IFileSaveDialog* dialog() const;</a>
+    <a href="#filedialogbase-pointer" >IFileSaveDialog* operator->() const;</a>
+};
+</pre>
+
+<div class=boxed id="filedialogbase-opensave">
+<pre>
+struct OpenDialogBase()
+struct SaveDialogBase()
+</pre>
+<p>Construct an <code>OpenDialogBase</code> or <code>SaveDialogBase</code> object to create, customize and manage an open file or save file dialog. Derive a class from one of these and construct an object of the derived class if you need to override any of the <a href="#filedialogbase-events">IFileDialogEvents</a> or <a href="#filedialogbase-controlevents">IFileDialogControlEvents</a> virtual functions.</p>
+</div>
+
+<div class=boxed id="filedialogbase-customize">
+<pre>
+IFileDialogCustomize* customize() const;
+</pre>
+<p>Returns a pointer to the <a href="https://learn.microsoft.com/en-us/windows/win32/api/shobjidl_core/nn-shobjidl_core-ifiledialogcustomize">IFileDialogCustomize</a> interface for the dialog. <code>FileDialogBase</code> defines a number of methods that access this interface; you can use this pointer if you need to access interface methods that do not have corresponding <code>FileDialogBase</code> definitions.</p>
+</div>
+
+<div class=boxed id="filedialogbase-lastResult">
+<pre>
+HRESULT lastResult() const;
+</pre>
+<p>Returns the <code>HRESULT</code> returned by the last interface method called. The interface methods used with the Common Item Dialog return an <code>HRESULT</code> that must be tested to identify error conditions. Most of the <code>FileDialogBase</code> functions examine these values as they progress and ultimately return either a requested value or a <code>true</code>/<code>false</code> indication of their success. Use this function if you need to know the returned value of the last interface method called.</p>
+</div>
+
+<div class=boxed id="filedialogbase-Close">
+<pre>
+bool Close(HRESULT code);
+</pre>
+<p>Closes the dialog. Returns <code>true</code> if the request was successful.</p>
+<ul>
+<li>The <code>code</code> supplied will be set as the <code>lastResult()</code> after the <a href="#filedialogbase-Show"><code>Show</code></a> function returns. Note that <code>Show</code> returns <code>true</code> if <code>code</code> is <code>0</code>, returns <code>false</code> if <code>code</code> is positive, and throws a <code>std::runtime_error</code> if <code>code</code> is negative.
+</ul>
+</div>
+
+<div class=boxed id="filedialogbase-GetCurrentSelection">
+<pre>
+IShellItem* GetCurrentSelection();
+</pre>
+<p>Returns a pointer to an <a href="https://learn.microsoft.com/en-us/windows/win32/api/shobjidl_core/nn-shobjidl_core-ishellitem">IShellItem</a> that represents the item currently selected in the dialog, or <code>0</code> if the request fails. This item can be a file or folder selected in the view window, or something that the user has entered into the dialog's edit box. The calling application is responsible for releasing the retrieved IShellItem when it is no longer needed.</p>
+</div>
+
+<div class=boxed id="filedialogbase-GetOptions">
+<pre>
+FILEOPENDIALOGOPTIONS GetOptions();
+</pre>
+<p>Returns the current <a href="https://learn.microsoft.com/en-us/windows/win32/api/shobjidl_core/ne-shobjidl_core-_fileopendialogoptions">FILEOPENDIALOGOPTIONS</a>. Despite the name, this applies to both open and save dialogs. If the request fails, <code>lastResult()</code> will return a negative value.</p>
+</div>
+
+<div class=boxed id="filedialogbase-GetResult">
+<pre>
+IShellItem* GetResult();
+</pre>
+<p>When called after the dialog has closed or within an <code>OnFileOk</code> method, returns a pointer to an <a href="https://learn.microsoft.com/en-us/windows/win32/api/shobjidl_core/nn-shobjidl_core-ishellitem">IShellItem</a> that represents the user’s choice; returns <code>0</code> if there is no selection, if multiple items were selected, or if the request fails for any other reason. The calling application is responsible for releasing the retrieved IShellItem when it is no longer needed.</p>
+</div>
+
+<div class=boxed id="filedialogbase-GetResultPath">
+<pre>
+std::wstring GetResultPath();
+</pre>
+<p>When called after the dialog has closed or within an <code>OnFileOk</code> method, returns the full path of the user’s selection if a single selection has been made; returns the empty string if there is no selection, if multiple items were selected, or if the necessary requests fail for any other reason.</p>
+</div>
+
+<div class=boxed id="filedialogbase-QueryInterface">
+<pre>
+template&lt;typename T*&gt; T* QueryInterface();
+</pre>
+<p>Returns a pointer to the COM interface of the dialog of the type indicated by the template parameter; returns <code>0</code> if no such interface exits. The following example gets the window handle of an open or save dialog:</p>
+<pre class=example>
+// With dlg an instance of OpenDialogBase, SaveDialogBase,
+// or a class derived from either:
+
+HWND hw = 0;
+if (auto polew = dlg.QueryInterface&lt;IOleWindow&gt;()) {
+    polew->GetWindow(&amp;hw);
+    polew->Release();
+}
+
+// hw contains the window handle of the dialog managed by dlg.
+</pre>
+</div>
+
+<div class=boxed id="filedialogbase-SetDefaultExtension">
+<pre>
+bool SetDefaultExtension(const std::wstring&amp; extension);
+</pre>
+<p>Sets the default extension used by the dialog. Returns <code>true</code> if successful.</p>
+<ul>
+<li><code>extension</code> The file extension to set as default, not including the leading period.
+</ul>
+</div>
+
+<div class=boxed id="filedialogbase-SetFileName">
+<pre>
+bool SetFileName(const std::wstring&amp; name);
+</pre>
+<p>Sets the initial file name, or the initial folder and file name, to be shown in the dialog. Returns <code>true</code> if successful.</p>
+<ul>
+<li><code>name</code> is either a file name or a file path and name. If <code>name</code> does not include a backslash (<code>\</code>) character, only the file name is set; otherwise, the supplied string is parsed as a path and both folder and file name are set.
+</ul>
+</div>
+
+<div class=boxed id="filedialogbase-SetFileNameLabel">
+<pre>
+bool SetFileNameLabel(const std::wstring&amp; label);
+</pre>
+<p>Sets the text of the label for the file name control. Returns <code>true</code> if successful.</p>
+<ul>
+<li><code>label</code> is the text to be shown to the left of the area in which the user can enter a file name.
+</ul>
+</div>
+
+<div class=boxed id="filedialogbase-SetFileTypeIndex">
+<pre>
+bool SetFileTypeIndex(int n);
+</pre>
+<p>When called after <code>SetFileTypes</code> and before the dialog is shown, specifies which file type is initially selected. Returns <code>true</code> if successful.</p>
+<ul>
+<li><code>n</code> is a one-based index into the list of file types supplied using <code>SetFileTypes</code> specifying which should be initially selected.
+</ul>
+</div>
+
+<div class=boxed id="filedialogbase-SetFileTypes">
+<pre>
+bool SetFileTypes(const std::wstring&amp; types);
+</pre>
+<p>When called before the dialog is shown, sets the list of file types that can be opened or saved. Returns <code>true</code> if successful.</p>
+<ul>
+<li><code>types</code> is a string that lists the display text and file patterns for each selection that will appear in the file type drop-down box. It consists of alternating display text and file pattern specifications separated by the vertical bar (<code>|</code>) character. Following is an example that establishes two entries in the file type selection box, one for three different extensions that can represent JSON files and one that allows any file to be selected, and then specifies that the first one will be selected when the dialog opens:
+</ul>
+<pre class=example>
+fod.SetFileTypes(L"JSON Files (*.jsonc; *.json; *.json5)|*.jsonc;*.json;*.json5|All Files (*.*)|*.*");
+fod.SetFileTypeIndex(1);
+</pre>
+</div>
+
+<div class=boxed id="filedialogbase-SetOkButtonLabel">
+<pre>
+bool SetOkButtonLabel(const std::wstring&amp; label);
+</pre>
+<p>Sets the label on the button the user uses to confirm a selection (defaults to <strong>Open</strong> or <strong>Save</strong>). Returns <code>true</code> if successful.</p>
+<ul>
+<li><code>label</code> is the label that will appear on button that confirms the dialog action.
+</ul>
+</div>
+
+<div class=boxed id="filedialogbase-SetOptions">
+<pre>
+bool SetOptions(FILEOPENDIALOGOPTIONS opt);
+</pre>
+<p>Sets options for the file dialog. Despite the name, this applies to both open and save dialogs. It is recommended to use <a href="#filedialogbase-GetOptions"><code>GetOptions</code></a> first and then modify the existing flags to avoid missing expected defaults. Returns <code>true</code> if successful.</p>
+<ul>
+<li><code>opt</code> is a <a href="https://learn.microsoft.com/en-us/windows/win32/api/shobjidl_core/ne-shobjidl_core-_fileopendialogoptions">FILEOPENDIALOGOPTIONS</a> value with all options set or reset as required.</p>
+</ul>
+</div>
+
+<div class=boxed id="filedialogbase-SetTitle">
+<pre>
+bool SetTitle(const std::wstring&amp; title);
+</pre>
+<p>Sets the title of the dialog. Returns <code>true</code> if successful.</p>
+<ul>
+<li><code>title</code> specifies the text to appear in the title bar of the dialog.
+</ul>
+</div>
+
+<div class=boxed id="filedialogbase-Show">
+<pre>
+bool Show(HWND owner = 0);
+</pre>
+<p>Displays the dialog. Returns <code>true</code> when the “OK” button (<strong>Open</strong> or <strong>Save</strong> unless <a href="#filedialogbase-SetOkButtonLabel"><code>SetOkButtonLabel</code></a> has been called) is pressed or when <a href="#filedialogbase-Close"><code>Close</code></a>(0) is called. Returns <code>false</code> when <strong>Cancel</strong> is pressed or <code>Close</code> is called with a positive argument. Throws <code>std::runtime_error</code> if an error occurs or when <code>Close</code> is called with a negative argument.
+<ul>
+<li><code>owner</code> specifies the window handle of a top-level window that will be the owner of the dialog. If <code>0</code> is specified or defaulted the desktop will be the owner.
+</ul>
+</div>
+
+<div class=boxed id="filedialogbase-AddCheckButton">
+<pre>
+bool AddCheckButton(DWORD id, const std::wstring&amp; label, bool checked);
+</pre>
+<p>Adds a check box to the dialog. Returns <code>true</code> if successful.</p>
+<ul>
+<li><code>id</code> defines a number by which you can identify the control.
+<li><code>label</code> specifies the text that will appear beside the check box.
+<li><code>checked</code> must be <code>true</code> if the box should be checked initially, <code>false</code> otherwise.
+</ul>
+</div>
+
+<div class=boxed id="filedialogbase-AddControlItem">
+<pre>
+bool AddControlItem(DWORD controlId, DWORD itemId, const std::wstring&amp; label);
+</pre>
+<p>Adds an item to a container control in the dialog. Returns <code>true</code> if successful.</p>
+<ul>
+<li><code>controlId</code> specifies the id of container.
+<li><code>itemId</code> defines the id of the control to be added.
+<li><code>label</code> specifies the text of the item to be added.
+</ul>
+</div>
+
+<div class=boxed id="filedialogbase-AddPushButton">
+<pre>
+bool AddPushButton(DWORD id, const std::wstring&amp; label);
+</pre>
+<p>Adds a button control to the dialog. Returns <code>true</code> if successful.</p>
+<ul>
+<li><code>id</code> defines a number by which you can identify the control.
+<li><code>label</code> specifies the text that will appear inside the button.
+</ul>
+</div>
+
+<div class=boxed id="filedialogbase-AddText">
+<pre>
+bool AddText(DWORD id, const std::wstring&amp; label);
+</pre>
+<p>Adds text to the dialog. Returns <code>true</code> if successful.</p>
+<ul>
+<li><code>id</code> defines a number by which you can identify the control.
+<li><code>label</code> specifies the text.
+</ul>
+</div>
+
+<div class=boxed id="filedialogbase-EnableOpenDropDown">
+<pre>
+bool EnableOpenDropDown(DWORD id);
+</pre>
+<p>Enables a drop-down list on the Open or Save button in the dialog. Returns <code>true</code> if successful. After creating the control, use <a href="#filedialogbase-AddControlItem">AddControlItem</a> to add selections to the list. Returns <code>true</code> if successful.</p>
+<ul>
+<li><code>id</code> defines a number by which you can identify the control.
+</ul>
+</div>
+
+<div class=boxed id="filedialogbase-GetCheckButtonState">
+<pre>
+bool GetCheckButtonState(DWORD id);
+</pre>
+<p>Returns <code>true</code> if successful and the specified check box is checked, otherwise <code>false</code>.</p>
+<ul>
+<li><code>id</code> specifies the id of the check box to be examined.
+</ul>
+</div>
+
+<div class=boxed id="filedialogbase-GetSelectedControlItem">
+<pre>
+DWORD GetSelectedControlItem(DWORD id);
+</pre>
+<p>Returns the id of the control the user has selected within the specified containing control, or <code>0</code> if not successful. To determine the user’s final choice, this method can be called on option button groups, combo boxes, and drop-down lists on the Open or Save button after the dialog has closed. For option button groups and combo boxes, this method can also be called while the dialog is showing, to determine the current choice.</p>
+<ul>
+<li><code>id</code> specifies the id of the containing control to be examined.
+</ul>
+</div>
+
+<div class=boxed id="filedialogbase-MakeProminent">
+<pre>
+bool MakeProminent(DWORD id);
+</pre>
+<p>Places the specified control in the dialog so that it stands out compared to other added controls. The specifics of how controls are rendered are not defined and cannot be controlled using the Common File Dialog interface. Returns <code>true</code> if successful.</p>
+<ul>
+<li><code>id</code> specifies the id of the control to be made prominent.
+</ul>
+</div>
+
+<div class=boxed id="filedialogbase-SetCheckButtonState">
+<pre>
+bool SetCheckButtonState(DWORD id, bool checked);
+</pre>
+<p>Sets the specified check button checked or unchecked. Returns <code>true</code> if successful.</p>
+<ul>
+<li><code>id</code> specifies the id of the check box to be set.
+<li><code>checked</code> must be <code>true</code> if the box is to be checked or <code>false</code> if the box is to be unchecked.
+</ul>
+</div>
+
+<div class=boxed id="filedialogbase-dialog">
+<pre>
+IFileOpenDialog* dialog() const;
+IFileSaveDialog* dialog() const;
+</pre>
+<p>Returns a pointer to the COM object that controls the open or save dialog.</p>
+</div>
+
+<div class=boxed id="filedialogbase-pointer">
+<pre>
+IFileOpenDialog* operator->() const;
+IFileSaveDialog* operator->() const;
+</pre>
+<p>Selects a member function of the COM object that controls the open or save dialog. <code>FileDialogBase</code> defines a number of methods that access this interface; you can use this pointer definition if you need to access interface methods that do not have corresponding <code>FileDialogBase</code> definitions.</p>
+</div>
+
+<div class=boxed id="filedialogbase-GetResults">
+<pre>
+IShellItemArray* GetResults();
+</pre>
+<p>When called after the dialog has closed or within an <code>OnFileOk</code> method, returns a pointer to an <a href="https://learn.microsoft.com/en-us/windows/win32/api/shobjidl_core/nn-shobjidl_core-ishellitemarray">IShellItemArray</a> that lists the items the user selected; returns <code>0</code> if not successful.</p>
+</div>
+
+<div class=boxed id="filedialogbase-GetSelectedItems">
+<pre>
+IShellItemArray* GetSelectedItems();
+</pre>
+<p>Returns a pointer to an <a href="https://learn.microsoft.com/en-us/windows/win32/api/shobjidl_core/nn-shobjidl_core-ishellitemarray">IShellItemArray</a> that lists the items currently selected in the dialog; returns <code>0</code> if not successful.</p>
+</div>
+
+<div class=boxed id="filedialogbase-events">
+<pre>
+STDMETHODIMP OnFileOk         (IFileDialog* pfd)                                                          { return E_NOTIMPL; }
+STDMETHODIMP OnFolderChanging (IFileDialog* pfd, IShellItem* psiFolder)                                   { return E_NOTIMPL; }
+STDMETHODIMP OnFolderChange   (IFileDialog* pfd)                                                          { return E_NOTIMPL; }
+STDMETHODIMP OnSelectionChange(IFileDialog* pfd)                                                          { return E_NOTIMPL; }
+STDMETHODIMP OnShareViolation (IFileDialog* pfd, IShellItem* psi, FDE_SHAREVIOLATION_RESPONSE* pResponse) { return E_NOTIMPL; }
+STDMETHODIMP OnTypeChange     (IFileDialog* pfd)                                                          { return E_NOTIMPL; }
+STDMETHODIMP OnOverwrite      (IFileDialog* pfd, IShellItem* psi, FDE_OVERWRITE_RESPONSE* pResponse)      { return E_NOTIMPL; }
+</pre>
+<p>These are virtual functions from <a href="https://learn.microsoft.com/en-us/windows/win32/api/shobjidl_core/nn-shobjidl_core-ifiledialogevents">IFileDialogEvents</a> that you can override to intercept various events. The default implementations return <code>E_NOTIMPL</code>, indicating that you do not process the event.</p>
+</div>
+
+<div class=boxed id="filedialogbase-controlevents">
+<pre>
+STDMETHODIMP OnItemSelected      (IFileDialogCustomize* pfdc, DWORD dwIDCtl, DWORD dwIDItem) { return E_NOTIMPL; }
+STDMETHODIMP OnButtonClicked     (IFileDialogCustomize* pfdc, DWORD dwIDCtl)                 { Close(dwIDCtl); return 0; }
+STDMETHODIMP OnCheckButtonToggled(IFileDialogCustomize* pfdc, DWORD dwIDCtl, BOOL bChecked)  { return E_NOTIMPL; }
+STDMETHODIMP OnControlActivating (IFileDialogCustomize* pfdc, DWORD dwIDCtl)                 { return E_NOTIMPL; }
+</pre>
+<p>These are virtual functions from <a href="https://learn.microsoft.com/en-us/windows/win32/api/shobjidl/nn-shobjidl-ifiledialogcontrolevents">IFileDialogControlEvents</a> that you can override to intercept various events. The default implementations for <code>OnItemSelected</code>, <code>OnCheckButtonToggled</code> and <code>OnControlActivating</code> return <code>E_NOTIMPL</code>, indicating that you do not process the event; the default implementation for <code>OnButtonClicked</code> closes the dialog and sets the control ID of the button as the value that will be available in <code>lastResult()</code> when <code>Show()</code> returns.</p>
+</div>
+
+
+</section>
 
 </article>
 

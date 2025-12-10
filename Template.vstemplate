@@ -35,10 +35,12 @@
       <ProjectItem ReplaceParameters="true"  >src\resource.h</ProjectItem>
       <ProjectItem ReplaceParameters="true"  >src\resource.rc</ProjectItem>
       <ProjectItem ReplaceParameters="false" >src\Framework\ConfigFramework.h</ProjectItem>
+      <ProjectItem ReplaceParameters="false" >src\Framework\FileDialogBase.h</ProjectItem>
       <ProjectItem ReplaceParameters="false" >src\Framework\PluginFramework.cpp</ProjectItem>
       <ProjectItem ReplaceParameters="false" >src\Framework\PluginFramework.h</ProjectItem>
       <ProjectItem ReplaceParameters="false" >src\Framework\ScintillaCallEx.cpp</ProjectItem>
       <ProjectItem ReplaceParameters="false" >src\Framework\ScintillaCallEx.h</ProjectItem>
+      <ProjectItem ReplaceParameters="false" >src\Framework\UnicodeFormatTranslation.h</ProjectItem>
       <ProjectItem ReplaceParameters="false" >src\Framework\UtilityFramework.h</ProjectItem>
       <ProjectItem ReplaceParameters="false" >src\Framework\UtilityFrameworkMIT.h</ProjectItem>
       <ProjectItem ReplaceParameters="false" >src\Host\BoostRegexSearch.h</ProjectItem>

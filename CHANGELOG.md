@@ -2,6 +2,11 @@
 
 ***Note: This is the changelog for the template. In your project, replace this text with the changelog for your own plugin.***
 
+## Version 1.6 -- December 10th, 2025
+
+* Updated files in the Host directory to Notepad++ 8.8.9.
+* Added support files **FileDialogBase.h** and **UnicodeFormatTranslation.h** and updated documentation.
+
 ## Version 1.5 -- October 7th, 2025
 
 * Updated files in the Host directory to Notepad++ 8.8.6.

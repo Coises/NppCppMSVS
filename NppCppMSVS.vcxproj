@@ -21,8 +21,10 @@
   <ItemGroup>
     <ClInclude Include="src\CommonData.h" />
     <ClInclude Include="src\Framework\ConfigFramework.h" />
+    <ClInclude Include="src\Framework\FileDialogBase.h" />
     <ClInclude Include="src\Framework\PluginFramework.h" />
     <ClInclude Include="src\Framework\ScintillaCallEx.h" />
+    <ClInclude Include="src\Framework\UnicodeFormatTranslation.h" />
     <ClInclude Include="src\Framework\UtilityFramework.h" />
     <ClInclude Include="src\Framework\UtilityFrameworkMIT.h" />
     <ClInclude Include="src\Host\Docking.h" />
